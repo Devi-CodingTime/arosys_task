@@ -29,7 +29,7 @@ const Register = () => {
     setError('');
     
     try {
-      await axios.post('http://localhost:8000/api/auth/register', formData);
+      await axios.post(`http://localhost:5000/api/auth/register`, formData);
       navigate('/login');
     } catch (error) {
       setError(error.response?.data?.message || 'Registration failed. Please try again.');

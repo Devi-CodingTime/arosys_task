@@ -1,5 +1,5 @@
-import Chat from "../model/chatModel.js";
-import User from "../model/userModel.js";
+import Chat from "../models/chatModel.js";
+import User from "../models/User.js";
 
 export const saveMessage = async (messageData) => {
   try {

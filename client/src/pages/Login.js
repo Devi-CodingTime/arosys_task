@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import axios from 'axios';
 import {
   Box,
@@ -27,7 +27,8 @@ const Login = () => {
     setLoading(true);
     
     try {
-      const { data } = await axios.post('http://localhost:8000/api/auth/login', formData);
+      console.log('Logging in with:', process.env.BACKEND_BASE_URL);
+      const { data } = await axios.post(`http://localhost:5000/api/auth/login`, formData);
       localStorage.setItem('user', JSON.stringify(data.user));
       localStorage.setItem('token', data.token);
       navigate('/chat');
@@ -51,7 +52,7 @@ const Login = () => {
         <Paper elevation={3} sx={{ p: 4, width: '100%' }}>
           <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
             Login
-          </Typography>
+          </Typography>          
           {error && (
             <Alert severity="error" sx={{ mb: 2 }}>
               {error}
@@ -86,6 +87,15 @@ const Login = () => {
             >
               {loading ? <CircularProgress size={24} /> : 'Login'}
             </Button>
+            <Box sx={{ textAlign: 'center' }}>
+              <Typography variant="body2" color="text.secondary">
+                Don't have an account?{' '}
+                <Link to="/" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                  Sign up
+                </Link>
+              </Typography>
+            </Box>
+            
           </Box>
         </Paper>
       </Box>

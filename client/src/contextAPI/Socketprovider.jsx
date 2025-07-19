@@ -12,7 +12,7 @@ const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    const newSocket = io('http://localhost:8000', {
+    const newSocket = io(`http://localhost:5000`, {
       query: { id: user?.id }
     });
     setSocket(newSocket);

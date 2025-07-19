@@ -1,10 +1,7 @@
 import axios from 'axios';
-
-const API_URL = 'http://localhost:8000/api/auth';
-
 export const getAllUsers = async () => {
   try {
-    const response = await axios.get(`${API_URL}/users`);
+    const response = await axios.get(`http://localhost:5000/api/auth/users`);
     return {
       users: response.data.data,
       success: true
